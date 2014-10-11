@@ -1,5 +1,6 @@
 #!/bin/bash
-# Downloading random wallpapers from /wallhaven/ random page and setting 'em up
+# Downloading random wallpaper from /wallhaven/ random page
+# Dependencies: wget, dos2unix
 
 #Dirs, vars, etc declartion
 pdir="$HOME/.ws"
