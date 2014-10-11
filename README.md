@@ -12,12 +12,12 @@ Install
 
 FAQ
 ---
-Q. Where are my wallpapers?
-A. ~/.ws/pics/
+#####Where are my wallpapers?
+~/.ws/pics/
 
-Q. Can NSFW wallpapers can apply?
-A. Yes.
+#####Can NSFW wallpapers can apply?
+Yes.
 
-Q.Cool! How do I set the wallpaper I've just downloaded?
+#####How do I set the wallpaper I've just downloaded?
 A. It depends on your DE/WM, use your favorite search engine to find out.
 
