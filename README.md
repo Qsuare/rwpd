@@ -15,7 +15,7 @@ FAQ
 #####Where are my wallpapers?
 ~/.ws/pics/
 
-#####Can NSFW wallpapers can apply?
+#####Can NSFW wallpapers apply?
 Yes.
 
 #####How do I set the wallpaper I've just downloaded?
