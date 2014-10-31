@@ -31,7 +31,7 @@ if [ -f $pdir/index.html ]
 fi
 
 #Downloads the /wallhaven/ page *FOR NOW, NSFW WALLPAPERS MIGHT APPLY*.
-wget -q  --directory-prefix=$bdir alpha.wallhaven.cc/wallpaper/random/
+wget -q  --directory-prefix=$bdir alpha.wallhaven.cc/random/
 
 #Getting wallpaper's page link
 	func1(){
