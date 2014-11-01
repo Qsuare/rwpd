@@ -6,19 +6,18 @@
 pdir="$HOME/.ws"
 bdir="$pdir/bin"
 cdir="$pdir/pics"
-slink="http://alpha.wallhaven.cc/random/"
+slink="http://alpha.wallhaven.cc/search?categories=111&purity=100&sorting=random&order=desc.html"
 
 #NSFW Filtering
-while getopts ":s" ${args}; do 
-	case ${args} in
-			nsfw)	
+while getopts ":s" args; do 
+	case "${args}" in
+			s)	
 				slink="http://alpha.wallhaven.cc/search?categories=111&purity=010&sorting=random&order=desc.html"
-				;;
-			sfw)
-				slink="http://alpha.wallhaven.cc/search?categories=111&purity=100&sorting=random&order=desc.html"
+				echo $slink
 				;;
 	esac
 		done
+
 
 # Checks for the program's data dir and creates it if its missing:
 if [ ! -d $pdir ]
