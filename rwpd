@@ -13,7 +13,6 @@ while getopts ":s" args; do
 	case "${args}" in
 			s)	
 				slink="http://alpha.wallhaven.cc/search?categories=111&purity=010&sorting=random&order=desc.html"
-				echo $slink
 				;;
 	esac
 		done
@@ -81,3 +80,6 @@ wget -q "$link2" -P $cdir -A jpg
 
 #Cleanup
 rm -r $bdir
+
+#GG
+echo "Done, you can find your wallpapers in ~/.ws/pics/
