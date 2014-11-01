@@ -6,6 +6,20 @@
 pdir="$HOME/.ws"
 bdir="$pdir/bin"
 cdir="$pdir/pics"
+slink="http://alpha.wallhaven.cc/random/"
+
+#NSFW Filtering
+while getopts ":s" ${args}; do 
+	case ${args} in
+			nsfw)	
+				slink="http://alpha.wallhaven.cc/search?categories=111&purity=010&sorting=random&order=desc.html"
+				;;
+			sfw)
+				slink="http://alpha.wallhaven.cc/search?categories=111&purity=100&sorting=random&order=desc.html"
+				;;
+	esac
+		done
+
 # Checks for the program's data dir and creates it if its missing:
 if [ ! -d $pdir ]
   then
@@ -13,15 +27,15 @@ if [ ! -d $pdir ]
 fi
 
 #checks for bin dir and bla bla bla
-if [ ! -d $bdir ] 
+if [ ! -d $bdir ] 	
 	then
-   mkdir $bdir
+  mkdir $bdir
 fi
 
 #BLA BLA BLA
 if [ ! -d $cdir ]
 	then
-			mkdir $cdir
+	mkdir $cdir
 fi
 
 # index.html check
@@ -30,8 +44,8 @@ if [ -f $pdir/index.html ]
 		rm $pdir/index.html
 fi
 
-#Downloads the /wallhaven/ page *FOR NOW, NSFW WALLPAPERS MIGHT APPLY*.
-wget -q  --directory-prefix=$bdir alpha.wallhaven.cc/random/
+#Downloads the /wallhaven/ page.
+wget -q -O $bdir/index.html --directory-prefix=$bdir $slink
 
 #Getting wallpaper's page link
 	func1(){
@@ -57,18 +71,14 @@ wget -q "$link" -O $bdir/index.html
 grep "full" "$bdir/index.html" > $bdir/output.txt
 sed 's/src="//g' $bdir/output.txt > $bdir/output1.txt
 sed 's/"//g' $bdir/output1.txt > $bdir/output2.txt
-sed 's/http//g' $bdir/output2.txt > $bdir/output3.txt
-sed 's/ //g' $bdir/output3.txt > $bdir/output4.txt
+sed 's/ //g' $bdir/output2.txt > $bdir/output4.txt
 dos2unix -q $bdir/output4.txt #For this fucking %0D thing, thanks DOS.
-link2="http$(cat $bdir/output4.txt)"
+link2="http:$(cat $bdir/output4.txt)"
 
 
 #Downloads the wallpaper (finally)
 wget -q "$link2" -P $cdir -A jpg
 
+
 #Cleanup
 rm -r $bdir
-
-#gg
-sleep 1 && echo "Done, check for ~/.ws/pics/ to see your wallpapers"
-exit 0
