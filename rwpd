@@ -82,4 +82,4 @@ wget -q "$link2" -P $cdir -A jpg
 rm -r $bdir
 
 #GG
-echo "Done, you can find your wallpapers in ~/.ws/pics/
+echo "Done, you can find your wallpapers in ~/.ws/pics/"
