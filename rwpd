@@ -8,7 +8,7 @@ bdir="$pdir/bin"
 cdir="$pdir/pics"
 slink="http://alpha.wallhaven.cc/search?categories=111&purity=100&sorting=random&order=desc.html"
 
-#Dependcies Check
+#Dependencies Check
 if [ ! -e /bin/dos2unix ]
     then
      echo "You dont have dos2unix installed, please install it"
