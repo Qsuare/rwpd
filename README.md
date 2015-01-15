@@ -1,4 +1,4 @@
-RWPD (Radom WallPaper Downloader, was formaly known as wallhaven-random-wallpaper)
+RWPD (Random WallPaper Downloader, was formaly known as wallhaven-random-wallpaper)
 ==========================
 
 A script that downloads one random wallpaper from wallhaven.cc
