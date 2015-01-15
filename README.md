@@ -1,12 +1,12 @@
-wallhaven-random-wallpaper
+RWPD (Radom WallPaper Downloader, was formaly known as wallhaven-random-wallpaper)
 ==========================
 
-A script that downloads one random wallpaper from http://alpha.wallhaven.cc/wallpaper/random
+A script that downloads one random wallpaper from wallhaven.cc
 
 Install
 -------
-1. git clone https://github.com/Qsuare/wallhaven-random-wallpaper.git
-2. cd ~/wallhaven-random-wallpaper
+1. git clone https://github.com/Qsuare/rwpd.git
+2. cd rwpd/
 3. chmod +x rwpd
 4. sudo mv rwpd /usr/bin/
 
