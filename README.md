@@ -16,7 +16,7 @@ FAQ
 ~/.ws/pics/
 
 #####Can NSFW wallpapers apply?
-They cant apply be default, but they can apply but typing rwpd -s 
+They cant apply be default, but they can apply but typing rwpd -n or --nsfw 
 
 #####How do I set the wallpaper I've just downloaded?
 A. It depends on your DE/WM, use your favorite search engine to find out.
