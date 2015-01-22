@@ -24,8 +24,9 @@ showhelp(){
     echo "List of available options:
 
     -n || --nsfw        Run in NSFW mode. (download NSFW wallpapers)
+    --taylor-swift      Taylor swift mode.
     -r<resolution>  Search for wallpapers in a specific resolution.
-    -h || --help    Show this help message"
+    -h || --help    Show this help message."
 
 }
 #Flags
@@ -38,7 +39,9 @@ ArgumentCheck(){
             -r*) OUTPUT=`echo $i | sed -e 's/-r//g'`
                 echo "Searching for wallpapers with $OUTPUT resolution"
                                   slink="http://alpha.wallhaven.cc/search?categories=111&purity=100&resolutions=$OUTPUT&sorting=random&order=desc.html"
-                                  ;;                      
+                                  ;;
+            --taylor-swift ) echo "TAYLOR SWIFT HYPE"; slink="http://alpha.wallhaven.cc/search?q=taylor%20swift&categories=111&purity=100&sorting=random&order=desc.html";			
+                ;;
             -h | --help) showhelp; exit 0
                 ;;
             *)  echo "No such flag as "$i""
