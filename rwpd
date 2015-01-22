@@ -8,16 +8,49 @@ bdir="$pdir/bin"
 cdir="$pdir/pics"
 slink="http://alpha.wallhaven.cc/search?categories=111&purity=100&sorting=random&order=desc.html"
 
-#NSFW Filtering
-while getopts ":s" args; do 
-	case "${args}" in
-			s)	
-				slink="http://alpha.wallhaven.cc/search?categories=111&purity=010&sorting=random&order=desc.html"
-				;;
-	esac
-		done
+#Dependencies Check
+if [ ! -e /bin/dos2unix ]
+    then
+     echo "You dont have dos2unix installed, please install it"
+fi
 
+if [ ! -e /bin/wget ] 
+    then
+     echo "You dont have wget installed, please install it"
+fi
 
+#Help Function
+showhelp(){
+    echo "List of available options:
+
+    -n || --nsfw        Run in NSFW mode. (download NSFW wallpapers)
+    --taylor-swift      Taylor swift mode.
+    -r<resolution>  Search for wallpapers in a specific resolution.
+    -h || --help    Show this help message."
+
+}
+#Flags
+ArgumentCheck(){
+    for i in $@; do
+        case "$i" in
+            -n | --nsfw) echo "Searching for NSFW wallpapers" 
+                slink="http://alpha.wallhaven.cc/search?categories=111&purity=010&sorting=random&order=desc.html"
+                ;;
+            -r*) OUTPUT=`echo $i | sed -e 's/-r//g'`
+                echo "Searching for wallpapers with $OUTPUT resolution"
+                                  slink="http://alpha.wallhaven.cc/search?categories=111&purity=100&resolutions=$OUTPUT&sorting=random&order=desc.html"
+                                  ;;
+            --taylor-swift ) echo "TAYLOR SWIFT HYPE"; slink="http://alpha.wallhaven.cc/search?q=taylor%20swift&categories=111&purity=100&sorting=random&order=desc.html";			
+                ;;
+            -h | --help) showhelp; exit 0
+                ;;
+            *)  echo "No such flag as "$i""
+                showhelp; exit 1
+                ;;
+        esac
+    done
+}
+ArgumentCheck "$@"
 # Checks for the program's data dir and creates it if its missing:
 if [ ! -d $pdir ]
   then
@@ -82,4 +115,4 @@ wget -q "$link2" -P $cdir -A jpg
 rm -r $bdir
 
 #GG
-echo "Done, you can find your wallpapers in ~/.ws/pics/
+echo "Done, you can find your wallpapers in ~/.ws/pics/"
