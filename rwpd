@@ -96,12 +96,13 @@ func1
 wget -q "$link" -O $bdir/index.html
 grep "full" "$bdir/index.html" > $bdir/output.txt
 sed 's/<meta property="og//g' $bdir/output.txt > $bdir/output2.txt
-sed 's/[[:blank:]]//g' $bdir/output2.txt > $bdir/output3.txt
-sed 's/src="//g' $bdir/output3.txt > $bdir/output4.txt
-sed '$!d' $bdir/output4.txt > $bdir/output5.txt
-sed 's/\//\//g' $bdir/output5.txt > $bdir/output6.txt
-sed 's/[^0-9]*//g' output6.txt $bdir/output6.txt > $bdir/output7.txt
-wallpaperid="$(cat $bdir/output7.txt)"
+sed 's/[[:blank:]]//g' $bdir/output2.txt > $bdir/output.txt
+sed 's/src="//g' $bdir/output.txt > $bdir/output2.txt
+sed '$!d' $bdir/output2.txt > $bdir/output.txt
+sed 's/\//\//g' $bdir/output.txt > $bdir/output2.txt
+sed 's/[^0-9]*//g' $bdir/output2.txt $bdir/output2.txt > $bdir/output.txt
+wallpaperid=$(sed '$!d' $bdir/output.txt)
+echo $wallpaperid
 final_link="wallpapers.wallhaven.cc/wallpapers/full/wallhaven-$wallpaperid.jpg"
 
 #Downloads the wallpaper (finally)
