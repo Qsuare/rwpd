@@ -99,9 +99,9 @@ sed 's/<meta property="og//g' $bdir/output.txt > $bdir/output2.txt
 sed 's/[[:blank:]]//g' $bdir/output2.txt > $bdir/output3.txt
 sed 's/src="//g' $bdir/output3.txt > $bdir/output4.txt
 sed '$!d' $bdir/output4.txt > $bdir/output5.txt
-sed 's/\//\//g' $bdir/output6.txt > $bdir/output7.txt
-sed 's/[^0-9]*//g' output7.txt $bdir/output7.txt > $bdir/output8.txt
-wallpaperid="$(cat $bdir/output8.txt)"
+sed 's/\//\//g' $bdir/output5.txt > $bdir/output6.txt
+sed 's/[^0-9]*//g' output6.txt $bdir/output6.txt > $bdir/output7.txt
+wallpaperid="$(cat $bdir/output7.txt)"
 final_link="wallpapers.wallhaven.cc/wallpapers/full/wallhaven-$wallpaperid.jpg"
 
 #Downloads the wallpaper (finally)
