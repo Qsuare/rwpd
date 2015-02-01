@@ -18,4 +18,4 @@ Then, enter the unpacked folder:
 And finally, copy the executable to /usr/bin:
 > sudo cp rwpd /usr/bin/
 
-######For more information about the program, type rwpd -h when the program is installed
+**For more information about the program, type rwpd -h when the program is installed**
