@@ -1,6 +1,6 @@
 #!/bin/bash
-# Downloading random wallpaper from /wallhaven/ random page
-# Dependencies: wget, dos2unix
+# Downloading random wallpaper from wallhaven random page
+# Dependencies: wget
 
 #Dirs, vars, etc declartion
 pdir="$HOME/.ws"
@@ -8,12 +8,7 @@ bdir="$pdir/bin"
 cdir="$pdir/pics"
 slink="http://alpha.wallhaven.cc/search?categories=111&purity=100&sorting=random&order=desc.html"
 
-#Dependencies Check
-if [ ! -e /bin/dos2unix ]
-    then
-     echo "You dont have dos2unix installed, please install it"
-fi
-
+#Dependencie Check
 if [ ! -e /bin/wget ] 
     then
      echo "You dont have wget installed, please install it"
@@ -75,7 +70,7 @@ if [ -f $pdir/index.html ]
 		rm $pdir/index.html
 fi
 
-#Downloads the /wallhaven/ page.
+#Downloads the wallhaven page.
 wget -q -O $bdir/index.html --directory-prefix=$bdir $slink
 
 #Getting wallpaper's page link
@@ -100,15 +95,17 @@ func1
 #Gets the wallpaper link into var
 wget -q "$link" -O $bdir/index.html
 grep "full" "$bdir/index.html" > $bdir/output.txt
-sed 's/src="//g' $bdir/output.txt > $bdir/output1.txt
-sed 's/"//g' $bdir/output1.txt > $bdir/output2.txt
-sed 's/ //g' $bdir/output2.txt > $bdir/output4.txt
-dos2unix -q $bdir/output4.txt #For this fucking %0D thing, thanks DOS.
-link2="http:$(cat $bdir/output4.txt)"
-
+sed 's/<meta property="og//g' $bdir/output.txt > $bdir/output2.txt
+sed 's/[[:blank:]]//g' $bdir/output2.txt > $bdir/output3.txt
+sed 's/src="//g' $bdir/output3.txt > $bdir/output4.txt
+sed '$!d' $bdir/output4.txt > $bdir/output5.txt
+sed 's/\//\//g' $bdir/output6.txt > $bdir/output7.txt
+sed 's/[^0-9]*//g' output7.txt $bdir/output7.txt > $bdir/output8.txt
+wallpaperid="$(cat $bdir/output8.txt)"
+final_link="wallpapers.wallhaven.cc/wallpapers/full/wallhaven-$wallpaperid.jpg"
 
 #Downloads the wallpaper (finally)
-wget -q "$link2" -P $cdir -A jpg
+wget "$final_link" -P $cdir -A jpg
 
 
 #Cleanup
