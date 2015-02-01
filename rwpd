@@ -8,7 +8,7 @@ bdir="$pdir/bin"
 cdir="$pdir/pics"
 slink="http://alpha.wallhaven.cc/search?categories=111&purity=100&sorting=random&order=desc.html"
 
-#Dependencie Check
+#Dependency Check
 if [ ! -e /bin/wget ] 
     then
      echo "You dont have wget installed, please install it"
