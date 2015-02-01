@@ -1,23 +1,21 @@
-RWPD (Random WallPaper Downloader, was formaly known as wallhaven-random-wallpaper)
+RWPD
 ==========================
-
+Random WallPaper Downloader, was formaly known as wallhaven-random-wallpaper.
 A script that downloads one random wallpaper from wallhaven.cc
 
-Install
--------
-1. git clone https://github.com/Qsuare/rwpd.git
-2. cd rwpd/
-3. chmod +x rwpd
-4. sudo mv rwpd /usr/bin/
+The program saves every downloaded wallpaper to **$HOME/.ws/**
+###Installation
+####Stable release
+Download the package from [https://github.com/Qsuare/rwpd/releases](https://github.com/Qsuare/rwpd/releases) and unpack it. Then enter the unpacked folder and copy the executable (named rwpd) to /usr/bin, don't forget to use sudo!
 
-FAQ
----
-#####Where are my wallpapers?
-~/.ws/pics/
+####Unstable release
+First, clone the git repo:
+> git clone https://github.com/Qsuare/rwpd.git
 
-#####Can NSFW wallpapers apply?
-They cant apply be default, but they can apply but typing rwpd -n or --nsfw 
+Then, enter the unpacked folder:
+> cd rwpd/
 
-#####How do I set the wallpaper I've just downloaded?
-A. It depends on your DE/WM, use your favorite search engine to find out.
+And finally, copy the executable to /usr/bin:
+> sudo cp rwpd /usr/bin/
 
+For more information about the program, type rwpd -h when the program is installed
