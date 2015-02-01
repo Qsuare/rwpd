@@ -105,7 +105,7 @@ wallpaperid="$(cat $bdir/output7.txt)"
 final_link="wallpapers.wallhaven.cc/wallpapers/full/wallhaven-$wallpaperid.jpg"
 
 #Downloads the wallpaper (finally)
-wget "$final_link" -P $cdir -A jpg
+wget -q "$final_link" -P $cdir -A jpg
 
 
 #Cleanup
