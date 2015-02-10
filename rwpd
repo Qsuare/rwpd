@@ -1,46 +1,73 @@
 #!/bin/bash
-# Downloading random wallpaper from wallhaven random page
+# RWPD: Downloads random wallpaper from wallhaven random page
 # Dependencies: wget
+# Copyright (C) 2014 Roee Lazarovich
 
 #Dirs, vars, etc declartion
+version=1.1.1
 pdir="$HOME/.ws"
 bdir="$pdir/bin"
 cdir="$pdir/pics"
+res='resolution'
 slink="http://alpha.wallhaven.cc/search?categories=111&purity=100&sorting=random&order=desc.html"
 
 #Dependency Check
 if [ ! -e /bin/wget ] 
     then
-     echo "You dont have wget installed, please install it"
+     echo "You dont have wget installed, please install it"; exit 1
 fi
 
 #Help Function
 showhelp(){
-    echo "List of available options:
 
-    -n || --nsfw        Run in NSFW mode. (download NSFW wallpapers)
-    --taylor-swift      Taylor swift mode.
-    -r<resolution>  Search for wallpapers in a specific resolution.
-    -h || --help    Show this help message."
+    echo "Usage: rwpd [OPTION] [OPTION] ...
+    List of available options:
 
+    -n		--nsfw      Run in NSFW mode. (download NSFW wallpapers)
+    --taylor-swift          Taylor swift mode.
+    -r<resolution>          Search for wallpapers in a specific resolution.
+    -v		--version   Print Information about the last version.
+    -h		--help      Show this help message.
+"
+exit 0
+}
+
+#Version Printing Function
+PrintVersion(){
+	echo "
+
+██████╗ ██╗    ██╗██████╗ ██████╗ 
+██╔══██╗██║    ██║██╔══██╗██╔══██╗
+██████╔╝██║ █╗ ██║██████╔╝██║  ██║
+██╔══██╗██║███╗██║██╔═══╝ ██║  ██║
+██║  ██║╚███╔███╔╝██║     ██████╔╝
+╚═╝  ╚═╝ ╚══╝╚══╝ ╚═╝     ╚═════╝ 
+                                  
+RWPD (Random WallPaper Downloader) Version $version
+Copyright (C) 2014 Roee Lazarovich
+Licensed Under New BSD"
+exit 0
 }
 #Flags
 ArgumentCheck(){
     for i in $@; do
         case "$i" in
+
+            -r* ) export OUTPUT=$(echo $1 | sed 's/-r//g');
+                echo "Searching for wallpapers with $OUTPUT resolution"; slink="http://alpha.wallhaven.cc/search?categories=111&purity=100&resolutions=$OUTPUT&sorting=random&order=desc.html"
+                ;;
+            --taylor-swift ) echo "TAYLOR SWIFT HYPE"; slink="http://alpha.wallhaven.cc/search?q=taylor%20swift&categories=111&purity=100&resolutions=$OUTPUT&sorting=random&order=desc.html";
+                ;;
             -n | --nsfw) echo "Searching for NSFW wallpapers" 
-                slink="http://alpha.wallhaven.cc/search?categories=111&purity=010&sorting=random&order=desc.html"
+                slink="http://alpha.wallhaven.cc/search?categories=111&purity=010&resolutions=$OUTPUT&sorting=random&order=desc";
                 ;;
-            -r*) OUTPUT=`echo $i | sed -e 's/-r//g'`
-                echo "Searching for wallpapers with $OUTPUT resolution"
-                                  slink="http://alpha.wallhaven.cc/search?categories=111&purity=100&resolutions=$OUTPUT&sorting=random&order=desc.html"
-                                  ;;
-            --taylor-swift ) echo "TAYLOR SWIFT HYPE"; slink="http://alpha.wallhaven.cc/search?q=taylor%20swift&categories=111&purity=100&sorting=random&order=desc.html";			
+	    -v | --version) PrintVersion
+		;;
+            -h | --help) showhelp
                 ;;
-            -h | --help) showhelp; exit 0
-                ;;
-            *)  echo "No such flag as "$i""
-                showhelp; exit 1
+	    
+            *)  echo "No such flag as "$1""
+                showhelp
                 ;;
         esac
     done
