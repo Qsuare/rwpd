@@ -12,7 +12,7 @@ res='resolution'
 slink="http://alpha.wallhaven.cc/search?categories=111&purity=100&sorting=random&order=desc.html"
 
 #Dependency Check
-if [ ! -e /bin/wget ] 
+if [[ ! -e /bin/wget || ! -e /usr/bin/wget ]] 
     then
      echo "You dont have wget installed, please install it"; exit 1
 fi
